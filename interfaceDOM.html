@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<body>
+    
+<h1 id = "header"> Header com texto nao modificado </h1>
+
+<button onclick="geraElemento()">Criar elemento</button>
+<button onclick="deletaTodosElementos()">Remover todos os elementos</button>
+<button onclick="modificaTextoDoHeader()">Modificar texto do Header</button>
+<button onclick="modificaCorDoHeader()">Modificar cor do Header</button>
+
+<p id = "elem"></p>
+
+<script>
+var novoelemento;
+var elementos;
+var texto;
+var i = 0;
+var modtext = 0;
+var modcolor = 0;
+
+function geraElemento() {
+        novoelemento = document.createElement("p");
+	i++;
+        texto = document.createTextNode("Elemento " + i);
+        novoelemento.appendChild(texto);
+        elementos = document.getElementById("elem");
+	elementos.appendChild(novoelemento);
+}
+
+function deletaTodosElementos() {
+    if (i > 0){
+	i = 0;
+	novoelemento.remove(texto);
+	document.getElementById("elem").innerHTML = "";
+    }
+}
+
+function modificaTextoDoHeader() {
+    modtext++
+    document.getElementById("header").innerHTML = "Texto do Header Modificado pela " + modtext + "ª vez";
+}
+
+function modificaCorDoHeader() {
+    modcolor++;
+    if(modcolor%5 == 1)
+    	document.getElementById("header").style.color = "blue";
+    else if(modcolor%5 == 2)
+	document.getElementById("header").style.color = "red";
+    else if(modcolor%5 == 3)
+	document.getElementById("header").style.color = "green";
+    else if(modcolor%5 == 4)
+	document.getElementById("header").style.color = "pink";
+    else document.getElementById("header").style.color = "brown";
+}
+</script>
+
+</body>
+</html>
